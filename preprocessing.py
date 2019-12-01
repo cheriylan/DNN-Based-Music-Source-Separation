@@ -8,13 +8,6 @@ from os import path as op
 from math import pi
 
 def diffRescale(phase):
-    """ Make data from audio recoding
-        args:
-        audio_track numpy array stereo mixture shape (num_samples, 2)
-        Returns:
-            amplitude, phase and processed phase derivatives
-        """
-
     dt = np.diff(phase)
     dt = np.concatenate([np.zeros((phase.shape[0], phase.shape[1], 1)), dt], axis=-1)
     time_shift = 2 * pi * HOP_SIZE / WINDOW_SIZE * np.arange(phase.shape[0])
